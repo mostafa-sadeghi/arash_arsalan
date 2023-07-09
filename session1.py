@@ -16,7 +16,7 @@
 
 # x = 1.4
 # print(x)
-#print(type(x))
+# print(type(x))
 
 
 # number = 12
@@ -26,10 +26,10 @@
 # name = "a"
 
 
-name = "ali"
-print(name[0])
-print(name[1])
-print(name[2])
+# name = "ali"
+# print(name[0])
+# print(name[1])
+# print(name[2])
 
 # TODO   برنامه ای بنویسید که سه عدد را درون سه متغیر قرار دهد
 # سپس حاصل جمع، تفریق، تقسیم و ضرب ان ها محاسبه کنید و پرینت نمایید
