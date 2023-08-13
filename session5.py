@@ -30,13 +30,13 @@
 برنامه ای بنویسید که نام و غذای مورد علاقه چهار نفر را از ووردی دریافت نماید و در یک دیکشنری ذخیره نماید
 """
 
-import turtle
+# import turtle
 
-my_screen = turtle.Screen()
-my_turtle = turtle.Turtle()
-my_turtle.shape("turtle")
-my_turtle.shapesize(3)
-my_turtle.pensize(3)
-my_turtle.forward(100)
+# my_screen = turtle.Screen()
+# my_turtle = turtle.Turtle()
+# my_turtle.shape("turtle")
+# my_turtle.shapesize(3)
+# my_turtle.pensize(3)
+# my_turtle.forward(100)
 
-turtle.done()
+# turtle.done()
