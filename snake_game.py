@@ -30,13 +30,35 @@ def move_snake():
         y += 20
         snake_head.sety(y)
 
-    # TODO Three if conditions: for moving down, left and right
+    if snake_head.direction == "down":
+        y = snake_head.ycor()
+        y -= 20
+        snake_head.sety(y)
+    if snake_head.direction == "left":
+        x = snake_head.xcor()
+        x -= 20
+        snake_head.setx(x)
+
+    if snake_head.direction == "right":
+        x = snake_head.xcor()
+        x += 20
+        snake_head.setx(x)
 
 
 def go_up():
     snake_head.direction = "up"
 
-# TODO Define a function for other sides(go_down, go_right, go_left)
+
+def go_down():
+    snake_head.direction = "down"
+
+
+def go_left():
+    snake_head.direction = "left"
+
+
+def go_right():
+    snake_head.direction = "right"
 
 
 snake_head = create_turtle("square", "green")
@@ -46,11 +68,22 @@ change_position(snake_food)
 
 display_surface.listen()
 display_surface.onkeypress(go_up, "Up")
-# TODO onkeypress for other directions  ("Down", "Left", "Right")
+display_surface.onkeypress(go_down, "Down")
+display_surface.onkeypress(go_left, "Left")
+display_surface.onkeypress(go_right, "Right")
 
+snake_tails = []
 
 running = True
 while running:
     display_surface.update()
+    # Check when snake eats the food
+    if snake_head.distance(snake_food) < 20:
+        change_position(snake_food)
+        new_tail = create_turtle("square", "green")
+        snake_tails.append(new_tail)
+    # TODO
+    "هریک از دم های مار را سرجای دم قبلی باید قرار دهید"
+
     move_snake()
     sleep(0.2)
