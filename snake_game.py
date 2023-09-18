@@ -73,17 +73,37 @@ display_surface.onkeypress(go_left, "Left")
 display_surface.onkeypress(go_right, "Right")
 
 snake_tails = []
+score = 0
+
+scoreboard = create_turtle("square", "white")
+scoreboard.goto(0, 260)
+scoreboard.ht()
+
 
 running = True
 while running:
+    scoreboard.clear()
+    scoreboard.write(f"Score: {score}", font=("arial", 24), align="center")
     display_surface.update()
     # Check when snake eats the food
     if snake_head.distance(snake_food) < 20:
         change_position(snake_food)
         new_tail = create_turtle("square", "green")
         snake_tails.append(new_tail)
-    # TODO
-    "هریک از دم های مار را سرجای دم قبلی باید قرار دهید"
+        score += 1
+
+    for i in range(len(snake_tails)-1, 0, -1):
+        x = snake_tails[i-1].xcor()
+        y = snake_tails[i-1].ycor()
+        snake_tails[i].goto(x,y)
+
+    if len(snake_tails) > 0:
+        snake_tails[0].goto(snake_head.xcor(), snake_head.ycor())
 
     move_snake()
     sleep(0.2)
+
+# TODO """
+# به بازی یک کاراکتر مخرب اضافه نمائید 
+در صورت برخورد سر مار با کاراکتر از امتیاز بازیکن کم شود و نیز از طول مار نیز کاسته شود
+# """
