@@ -66,6 +66,11 @@ snake_head.direction = ""
 snake_food = create_turtle("circle", "red")
 change_position(snake_food)
 
+
+poison_apple = create_turtle("circle", "darkgreen")
+change_position(poison_apple)
+
+
 display_surface.listen()
 display_surface.onkeypress(go_up, "Up")
 display_surface.onkeypress(go_down, "Down")
@@ -92,18 +97,38 @@ while running:
         snake_tails.append(new_tail)
         score += 1
 
+    if snake_head.distance(poison_apple) < 20:
+        change_position(poison_apple)
+        score -= 1
+        if len(snake_tails) > 0:
+            snake_tails[-1].ht()
+            del snake_tails[-1]
+    if score < 0:
+        score = 0
+        snake_head.home()
+        snake_head.direction = ""
+        for tail in snake_tails:
+            tail.ht()
+
+        snake_tails = []
+
+    if snake_head.xcor() > 290 or snake_head.xcor() < -290 or snake_head.ycor() > 290 or snake_head.ycor() < -290:
+        score = 0
+        snake_head.home()
+        snake_head.direction = ""
+        for tail in snake_tails:
+            tail.ht()
+
+        snake_tails = []
+    
+    
     for i in range(len(snake_tails)-1, 0, -1):
         x = snake_tails[i-1].xcor()
         y = snake_tails[i-1].ycor()
-        snake_tails[i].goto(x,y)
+        snake_tails[i].goto(x, y)
 
     if len(snake_tails) > 0:
         snake_tails[0].goto(snake_head.xcor(), snake_head.ycor())
 
     move_snake()
     sleep(0.2)
-
-# TODO """
-# به بازی یک کاراکتر مخرب اضافه نمائید 
-در صورت برخورد سر مار با کاراکتر از امتیاز بازیکن کم شود و نیز از طول مار نیز کاسته شود
-# """
